@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a0412" />
+<title>FOREVER WITH YOU ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== BACKGROUND LAYERS ===== -->
+<canvas id="stars" aria-hidden="true"></canvas>
+<div id="heartsLayer" aria-hidden="true"></div>
+
+<!-- ===== TOP BAR ===== -->
+<header class="topbar">
+  <button id="backBtn" class="icon-btn" type="button" aria-label="Kembali">←</button>
+  <div class="topbar-title">FOREVER WITH YOU <span class="heart">❤</span></div>
+  <div class="topbar-actions">
+    <button id="musicBtn" class="icon-btn" type="button" aria-label="Musik ON/OFF" aria-pressed="false">🎵</button>
+    <button id="settingsBtn" class="icon-btn" type="button" aria-label="Pengaturan">⚙</button>
+  </div>
+</header>
+
+<!-- ===== MAIN SCREENS ===== -->
+<main>
+
+  <!-- ============ SCREEN 1 — OPENING ============ -->
+  <section class="screen active" id="s1">
+    <div class="hero">
+      <div class="badge">✦ Sebuah kejutan untukmu ✦</div>
+      <h1 class="title">FOREVER <span class="heart-pulse">❤</span> WITH YOU</h1>
+      <p class="lead type" id="type1">Hai, ada kejutan spesial buat kamu…</p>
+      <button class="btn primary" id="btnStart" type="button">BUKA KEJUTAN ❤️</button>
+      <p class="tiny">🎧 Nyalakan musik untuk pengalaman terbaik</p>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN 2 — LOVE LETTER ============ -->
+  <section class="screen" id="s2">
+    <div class="letter-stage">
+
+      <!-- Amplop -->
+      <div class="envelope" id="envelope" role="button" tabindex="0"
+           aria-label="Ketuk amplop untuk membuka surat">
+        <div class="env-back"></div>
+        <div class="env-letter"><span>💗</span></div>
+        <div class="env-front"></div>
+        <div class="env-flap"></div>
+        <div class="env-seal">❤</div>
+      </div>
+      <p class="hint" id="envHint">Ketuk amplop untuk membuka surat 💌</p>
+
+      <!-- Kartu Surat -->
+      <article class="letter-card" id="letterCard">
+        <div class="letter-head">Untuk <span id="letterTo">Kamu</span>,</div>
+        <p class="letter-body" id="letterBody"></p>
+        <div class="letter-sign">Dari,<br><span id="letterFrom">Aku</span></div>
+
+        <div class="photo-strip" id="photoStrip">
+          <div class="photo-slot" data-slot="0" role="button" tabindex="0" aria-label="Tambah foto">+ Foto</div>
+          <div class="photo-slot" data-slot="1" role="button" tabindex="0" aria-label="Tambah foto">+ Foto</div>
+          <div class="photo-slot" data-slot="2" role="button" tabindex="0" aria-label="Tambah foto">+ Foto</div>
+        </div>
+        <p class="tiny">Ketuk bingkai untuk menambahkan foto kenangan 📸</p>
+
+        <button class="btn primary" id="btnToGames" type="button">Lanjut ke Kejutan 🎮</button>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ SCREEN 3 — MINI GAME ============ -->
+  <section class="screen" id="s3">
+
+    <!-- Game 1: Catch Hearts -->
+    <div class="game-panel active" id="game1">
+      <div class="game-head">
+        <h2 class="h2">🎮 Game 1 — Tangkap Hati</h2>
+        <p class="muted">Geser keranjang untuk menangkap 10 hati ❤️</p>
+        <div class="score-pill">Tangkap: <b id="catchScore">0 / 10</b></div>
+      </div>
+      <div class="catch-area" id="catchArea">
+        <div class="basket" id="basket">🧺</div>
+      </div>
+    </div>
+
+    <!-- Game 2: Memory Match -->
+    <div class="game-panel" id="game2">
+      <div class="game-head">
+        <h2 class="h2">🎮 Game 2 — Cocokkan Pasangan</h2>
+        <p class="muted">Buka semua pasangan untuk membuka hadiah rahasia 🎁</p>
+      </div>
+      <div class="memory-grid" id="memoryGrid"></div>
+    </div>
+
+    <!-- Reward -->
+    <div class="game-panel reward-panel" id="rewardPanel">
+      <div class="gift" id="rewardGift" role="button" tabindex="0" aria-label="Buka hadiah rahasia">
+        <div class="gift-spark"></div>
+        <div class="gift-lid"><span>🎀</span></div>
+        <div class="gift-box"></div>
+      </div>
+      <h2 class="h2" id="rewardTitle">Hadiah Rahasia 🎁</h2>
+      <p class="muted" id="rewardText">Ketuk kotak untuk membukanya…</p>
+      <button class="btn primary" id="btnToConfess" type="button" style="display:none;margin-top:18px">Lanjut 💍</button>
+    </div>
+
+  </section>
+
+  <!-- ============ SCREEN 4 — FINAL CONFESSION ============ -->
+  <section class="screen" id="s4">
+    <div class="card confess">
+      <div class="ring">💍</div>
+      <p class="confess-pre" id="confessPre">SEBENARNYA ADA SATU HAL YANG INGIN AKU KATAKAN…</p>
+      <h2 class="big-q" id="confessQ">MAUKAH KAMU MENJADI PACARKU? ❤️</h2>
+      <div class="btn-row">
+        <button class="btn primary" id="btnYes" type="button">IYA, AKU MAU ❤️</button>
+        <button class="btn ghost" id="btnThink" type="button">AKU PIKIR-PIKIR DULU 😊</button>
+      </div>
+      <div class="cute-msg" id="cuteMsg"></div>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN 5 — RESULT ============ -->
+  <section class="screen" id="s5">
+    <div class="result">
+
+      <!-- YES variant -->
+      <div id="resultYes" style="display:none">
+        <div class="rose-big">🌹</div>
+        <h2 class="yeay">YEAY!<br>SEKARANG KITA PUNYA CERITA BARU! ❤️</h2>
+        <p class="lead">Terima kasih sudah bilang “IYA”. Mulai hari ini, kisah kita resmi dimulai. 🌹</p>
+      </div>
+
+      <!-- THINK variant -->
+      <div id="resultThink" style="display:none">
+        <div class="rose-big">🌷</div>
+        <h2 class="yeay">TERIMA KASIH SUDAH JUJUR 🌸</h2>
+        <p class="lead" id="thinkMsg">Aku menghargai keputusanmu. Nggak apa-apa, aku nggak akan ke mana-mana. Kalau kapanpun kamu siap, aku masih di sini. 💗</p>
+      </div>
+
+      <div class="btn-row" style="margin-top:30px">
+        <button class="btn primary" id="btnReplay" type="button">🔁 Ulangi Kejutan</button>
+        <button class="btn ghost" id="btnHome" type="button">🏠 Kembali ke Awal</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== SETTINGS MODAL ===== -->
+<div class="modal" id="settingsModal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2>⚙ Pengaturan</h2>
+      <button class="icon-btn" id="closeSettings" type="button">✕</button>
+    </div>
+    <div class="modal-body">
+      <label class="field">
+        <span>Nama Pengirim</span>
+        <input id="inputSender" type="text" maxlength="24" placeholder="Aku" />
+      </label>
+      <label class="field">
+        <span>Nama Penerima</span>
+        <input id="inputReceiver" type="text" maxlength="24" placeholder="Kamu" />
+      </label>
+      <p class="tiny">Nama akan dipakai di surat cinta.</p>
+    </div>
+    <div class="modal-foot">
+      <button class="btn ghost" id="btnResetSettings" type="button">Reset</button>
+      <button class="btn primary" id="btnSaveSettings" type="button">Simpan</button>
+    </div>
+  </div>
+</div>
+<div class="scrim" id="scrim"></div>
+
+<!-- ===== FX LAYERS ===== -->
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="burstLayer" aria-hidden="true"></div>
+<input type="file" id="photoInput" accept="image/*" hidden />
+
+<!-- ===== TOAST ===== -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
